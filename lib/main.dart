@@ -7,8 +7,6 @@ import 'package:maps/modules/phone%20auth/login_screen.dart';
 import 'package:maps/modules/phone%20auth/phone%20auth%20cubit/phone_auth_cubit.dart';
 import 'package:maps/shared/constants.dart';
 
-import 'modules/map_screen.dart';
-
 late String? initialRoute;
 
 void main() async {

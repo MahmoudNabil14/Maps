@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:maps/shared/constants.dart';
 import 'modules/phone auth/login_screen.dart';
 import 'modules/phone auth/otp_screen.dart';
@@ -16,27 +15,19 @@ class AppRouter {
     switch (settings.name) {
       case mapScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider<PhoneAuthCubit>.value(
-            value: phoneAuthCubit!,
-            child: LoginScreen(),
-          ),
+          builder: (_) =>  LoginScreen(),
         );
 
       case loginScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider<PhoneAuthCubit>.value(
-            value: phoneAuthCubit!,
-            child: LoginScreen(),
-          ),
+          builder: (_) =>  LoginScreen(),
         );
 
       case otpScreen:
         final phoneNumber = settings.arguments;
         return MaterialPageRoute(
-          builder: (_) => BlocProvider<PhoneAuthCubit>.value(
-            value: phoneAuthCubit!,
-            child: OtpScreen(phoneNumber: phoneNumber),
-          ),
+          builder: (_) =>  OtpScreen(phoneNumber: phoneNumber),
+
         );
     }
     return null;

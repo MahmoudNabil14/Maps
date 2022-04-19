@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:maps/modules/phone%20auth/phone%20auth%20cubit/phone_auth_cubit.dart';
+import 'package:maps/modules/phone%20auth/phone%20auth%20cubit/phone_auth_states.dart';
 import 'package:maps/shared/Styles/colors.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+
+import '../../shared/constants.dart';
 
 // ignore: must_be_immutable
 class OtpScreen extends StatelessWidget {
@@ -12,13 +15,17 @@ class OtpScreen extends StatelessWidget {
   late String _otpCode;
 
   void _login(BuildContext context) {
-    BlocProvider.of<PhoneAuthCubit>(context).submitOTP(_otpCode);
+    PhoneAuthCubit.get(context).submitOTP(_otpCode);
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if(state is CodeEnteredCorrectlyState){
+          Navigator.of(context).pushNamed(mapScreen);
+        }
+      },
       builder: (context, state){
         return SafeArea(
           child: Scaffold(

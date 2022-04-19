@@ -31,12 +31,12 @@ class LoginScreen extends StatelessWidget {
                   builder: (context) => OtpScreen(phoneNumber: _controller.text,)));
         }
       },
-      builder: (context, state) => SingleChildScrollView(
-        child: SafeArea(
-          child: Scaffold(
-              body: Padding(
-            padding:
-                const EdgeInsets.symmetric(vertical: 80.0, horizontal: 40.0),
+      builder: (context, state) => SafeArea(
+        child: Scaffold(
+            body: Padding(
+          padding:
+              const EdgeInsets.symmetric(vertical: 80.0, horizontal: 40.0),
+          child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -132,8 +132,8 @@ class LoginScreen extends StatelessWidget {
                 ),
               ],
             ),
-          )),
-        ),
+          ),
+        )),
       ),
     );
   }
