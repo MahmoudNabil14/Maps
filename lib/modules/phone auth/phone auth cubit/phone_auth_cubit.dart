@@ -15,7 +15,7 @@ class PhoneAuthCubit extends Cubit<PhoneAuthStates>{
 
     await FirebaseAuth.instance.verifyPhoneNumber(
       phoneNumber: "+2$phoneNumber",
-      timeout: const Duration(seconds: 15),
+      timeout: const Duration(seconds: 30),
       verificationCompleted: verificationCompleted,
       verificationFailed: verificationFailed,
       codeSent: codeSent,
@@ -53,13 +53,7 @@ class PhoneAuthCubit extends Cubit<PhoneAuthStates>{
     }
   }
 
-  Future<void> submitOTP(String otpCode) async {
-    PhoneAuthCredential credential = PhoneAuthProvider.credential(
-        verificationId: verificationId, smsCode: otpCode);
-    await signIn(credential);
-  }
-
-  Future<void> logOut() async {
+  Future<void> signOut() async {
     await FirebaseAuth.instance.signOut();
   }
 
@@ -67,4 +61,12 @@ class PhoneAuthCubit extends Cubit<PhoneAuthStates>{
     User firebaseUser = FirebaseAuth.instance.currentUser!;
     return firebaseUser;
   }
+
+  Future<void> submitOTP(String otpCode) async {
+    PhoneAuthCredential credential = PhoneAuthProvider.credential(
+        verificationId: verificationId, smsCode: otpCode);
+    await signIn(credential);
+  }
+
+
 }

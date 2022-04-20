@@ -4,6 +4,7 @@ import 'package:maps/modules/phone%20auth/otp_screen.dart';
 import 'package:maps/modules/phone%20auth/phone%20auth%20cubit/phone_auth_cubit.dart';
 import 'package:maps/modules/phone%20auth/phone%20auth%20cubit/phone_auth_states.dart';
 import 'package:maps/shared/Styles/colors.dart';
+import 'package:maps/shared/constants.dart';
 
 // ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {
@@ -25,10 +26,7 @@ class LoginScreen extends StatelessWidget {
     return BlocConsumer<PhoneAuthCubit, PhoneAuthStates>(
       listener: (context, state) {
         if (state is PhoneEnteredCorrectlyState) {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => OtpScreen(phoneNumber: _controller.text,)));
+          Navigator.of(context).pushNamed(otpScreen, arguments: _controller.text);
         }
       },
       builder: (context, state) => SafeArea(

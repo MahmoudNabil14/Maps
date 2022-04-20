@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:maps/modules/map_screen.dart';
 import 'package:maps/modules/phone%20auth/phone%20auth%20cubit/phone_auth_cubit.dart';
 import 'package:maps/modules/phone%20auth/phone%20auth%20cubit/phone_auth_states.dart';
 import 'package:maps/shared/Styles/colors.dart';
+import 'package:maps/shared/constants.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-
-import '../../shared/constants.dart';
 
 // ignore: must_be_immutable
 class OtpScreen extends StatelessWidget {
@@ -14,16 +14,12 @@ class OtpScreen extends StatelessWidget {
   final phoneNumber ;
   late String _otpCode;
 
-  void _login(BuildContext context) {
-    PhoneAuthCubit.get(context).submitOTP(_otpCode);
-  }
-
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer(
+    return BlocConsumer<PhoneAuthCubit, PhoneAuthStates>(
       listener: (context, state) {
         if(state is CodeEnteredCorrectlyState){
-          Navigator.of(context).pushNamed(mapScreen);
+          Navigator.of(context).pushReplacementNamed(mapScreen);
         }
       },
       builder: (context, state){
@@ -101,10 +97,10 @@ class OtpScreen extends StatelessWidget {
                         ),
                         child: MaterialButton(
                           color: Colors.black,
-                          height: 70.0,
+                          height: 50.0,
                           minWidth: 120.0,
                           onPressed: () {
-                            _login(context);
+                            PhoneAuthCubit.get(context).submitOTP(_otpCode);
                           },
                           child: const Text(
                             "Verify",
