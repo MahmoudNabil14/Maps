@@ -24,7 +24,7 @@ class MyDrawer extends StatelessWidget {
       Function()? onTap,
       Color? color}) {
     return ListTile(
-      title: Text(title,style: const TextStyle(fontSize: 18.0),),
+      title: Text(title,style: const TextStyle(fontSize: 14.0),),
       leading: Icon(
         leadingIcon,
         color: color ?? MyColors.blue,
@@ -86,6 +86,7 @@ class MyDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           buildDrawerHeader(),
           buildListItem(

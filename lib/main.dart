@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:maps/app_router.dart';
+import 'package:maps/modules/map_screen.dart';
 import 'package:maps/modules/phone%20auth/login_screen.dart';
 import 'package:maps/modules/phone%20auth/phone%20auth%20cubit/phone_auth_cubit.dart';
 import 'package:maps/shared/constants.dart';
@@ -15,7 +16,7 @@ void main() async {
 
   FirebaseAuth.instance.authStateChanges().listen((user) {
     if (user == null) {
-      initialRoute = loginScreen;
+      initialRoute = mapScreen;
     } else {
       initialRoute = mapScreen;
     }
@@ -56,7 +57,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: LoginScreen(),
+        home: const MapScreen(),
         onGenerateRoute: appRouter.generateRoute,
         initialRoute: initialRoute,
       ),
