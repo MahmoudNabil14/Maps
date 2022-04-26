@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:maps/modules/map_screen.dart';
 import 'package:maps/modules/phone%20auth/phone%20auth%20cubit/phone_auth_cubit.dart';
 import 'package:maps/modules/phone%20auth/phone%20auth%20cubit/phone_auth_states.dart';
 import 'package:maps/shared/Styles/colors.dart';

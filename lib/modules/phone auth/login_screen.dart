@@ -93,9 +93,7 @@ class LoginScreen extends StatelessWidget {
                                 fontSize: 18.0, letterSpacing: 1.2),
                             keyboardType: TextInputType.phone,
                             validator: (value) {
-                              if (value!.isEmpty) {
-                                return "Phone number cannot be empty";
-                              } else if (value.length != 11) {
+                              if (value!.length != 11) {
                                 return "Phone number must be 11 digits";
                               }
                               return null;
